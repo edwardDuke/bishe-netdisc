@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.netdisc.mapper.abcMapper">
+
+    <!--<resultMap id="BaseResultMap" type="com.bishe.netdisc.entity.abc">-->
+        <!--<result column="user_id" jdbcType="INTEGER" property="id" />-->
+    <!--</resultMap>-->
+
+    <!--<select id="sel1" resultType="com.bishe.netdisc.entity.abc">-->
+        <!--select * from sys_user where user_id = #{id}-->
+    <!--</select>-->
+
+</mapper>

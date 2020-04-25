@@ -1,6 +1,6 @@
 package com.bishe.netdisc.common.shiro;
 
-import com.bishe.netdisc.common.shiro.jwt.JwtToken;
+import com.bishe.netdisc.common.jwt.JwtToken;
 import com.bishe.netdisc.common.utils.JwtUtil;
 import com.bishe.netdisc.entity.User;
 import com.bishe.netdisc.service.UserService;
@@ -25,6 +25,11 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     UserService userService;
 
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     /**
      * 大坑，必须重写此方法，不然Shiro会报错
      */
@@ -32,6 +37,17 @@ public class UserRealm extends AuthorizingRealm {
     public boolean supports(AuthenticationToken authenticationToken) {
         return authenticationToken instanceof JwtToken;
     }
+
+
+
+    /**
+     * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
+     */
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        return null;
+    }
+
 
     /**
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
@@ -42,27 +58,20 @@ public class UserRealm extends AuthorizingRealm {
         String token = (String) authenticationToken.getCredentials();
         //获取用户账号
         String username = JwtUtil.getUsername(token);
+
+        System.out.println(username);
         // 帐号为空
-        if (username.isEmpty()) {
-            throw new AuthenticationException("Token中帐号为空(The account in Token is empty.)");
+        if (username==null || username =="") {
+            throw new AuthenticationException("Token中帐号为空");
         }
         // 查询数据库
         User user = userService.findByAccount(username);
         if (user == null) {
-            throw new AuthenticationException("该帐号不存在(The account does not exist.)");
+            throw new AuthenticationException("该帐号不存在");
         }
         if (! JwtUtil.verify(token, username, user.getPassword())) {
-            throw new AuthenticationException("Username or password error");
+            throw new AuthenticationException("Token无效");
         }
         return new SimpleAuthenticationInfo(token, token, "userRealm");
-    }
-
-    /**
-     * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
-     */
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
-        return null;
     }
 }

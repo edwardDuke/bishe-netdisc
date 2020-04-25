@@ -34,7 +34,7 @@ public class User {
     // 用户状态
     private String status;
     // 已用空间
-    private String usestoragesize;
+    private Double usestoragesize;
     // 创建时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;

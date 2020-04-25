@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.bishe.netdisc.common.exception.CommonException;
 
 
 import java.io.UnsupportedEncodingException;
@@ -17,8 +18,12 @@ import java.util.Date;
  * @create 2020/4/11 0011-下午 3:39
  */
 public class JwtUtil {
-    // 过期时间5分钟
-    private static final long EXPIRE_TIME = 5*60*1000;
+    /**
+     * 过期时间改为从配置文件获取
+     *
+     * 过期时间3个小时
+     */
+    private static final long EXPIRE_TIME = 180*60*1000;
 
     /**
      * 校验token是否正确
@@ -35,8 +40,9 @@ public class JwtUtil {
             DecodedJWT jwt = verifier.verify(token);
             return true;
         } catch (Exception exception) {
-            return false;
+//            throw new CommonException("JWTToken认证解密出现UnsupportedEncodingException异常:" + exception.getMessage());
         }
+        return false;
     }
 
     /**
@@ -48,6 +54,7 @@ public class JwtUtil {
             DecodedJWT jwt = JWT.decode(token);
             return jwt.getClaim("username").asString();
         } catch (JWTDecodeException e) {
+            System.out.println("获得token中的信息无需secret解密也能获得抛出异常了，返回null");
             return null;
         }
     }
@@ -68,7 +75,7 @@ public class JwtUtil {
                     .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
-            return null;
+            throw new CommonException("JWTToken加密出现UnsupportedEncodingException异常:" + e.getMessage());
         }
     }
 }

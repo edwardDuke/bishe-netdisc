@@ -7,12 +7,14 @@ import lombok.Getter;
 /**
  * 自定义异常
  */
-@Getter
-public class CommonException extends Exception  {
 
-    private ResultCode resultCode;
+public class CommonException extends RuntimeException{
 
-    public CommonException(ResultCode resultCode) {
-        this.resultCode = resultCode;
+    public CommonException(String msg) {
+        super(msg);
+    }
+
+    public CommonException(){
+        super();
     }
 }

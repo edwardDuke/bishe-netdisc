@@ -11,7 +11,7 @@ package com.bishe.netdisc.common.entity;
  */
 public enum ResultCode {
 
-    SUCCESS(true,10000,"操作成功！"),
+    SUCCESS(true,200,"操作成功！"),
     //---系统错误返回码-----
     FAIL(false,10001,"操作失败"),
     UNAUTHENTICATED(false,10002,"您还未登录"),
@@ -20,6 +20,7 @@ public enum ResultCode {
 
     //---用户操作返回码  2xxxx----
     MOBILEORPASSWORDERROR(false,20001,"用户名或密码错误");
+
 
 
     //---用户操作返回码  3xxxx----

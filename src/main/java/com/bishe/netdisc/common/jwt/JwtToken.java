@@ -1,4 +1,4 @@
-package com.bishe.netdisc.common.shiro.jwt;
+package com.bishe.netdisc.common.jwt;
 
 import org.apache.shiro.authc.AuthenticationToken;
 

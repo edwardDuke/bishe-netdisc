@@ -84,7 +84,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         HttpServletRequest req = (HttpServletRequest) request;
 
-        System.out.println("这是自己设的abc11111" + " "+this.getAuthzHeader(request));
+        System.out.println("当前Authorization：" + " "+this.getAuthzHeader(request));
         // 拿到当前Header中Authorization的AccessToken(Shiro中getAuthzHeader方法已经实现)
         String token = this.getAuthzHeader(request);
         return token != null;

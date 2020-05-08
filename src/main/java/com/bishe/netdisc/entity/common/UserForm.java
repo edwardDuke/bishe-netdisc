@@ -12,6 +12,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserForm {
     private String id;
     private String account;
+    private String password;
     private String name;
     private String sex;
+    private String roleid;
 }

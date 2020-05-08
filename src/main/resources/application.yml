@@ -33,4 +33,14 @@ spring:
       database: webdisk
       host: localhost
       port: 27017
+  # 配置上传文件的最大值和上传最大值，单位MB或KB
+  servlet:
+    multipart:
+      max-file-size: 6120MB
+      max-request-size: 6120MB
 
+hdfs:
+  path: hdfs://192.168.88.130:9000
+#  全分布地址
+#  path: hdfs://192.168.88.131:9000
+  user: hadoop3

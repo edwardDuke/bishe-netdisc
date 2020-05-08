@@ -5,11 +5,18 @@ import com.bishe.netdisc.common.entity.ResultCode;
 import com.bishe.netdisc.common.exception.CommonException;
 import com.bishe.netdisc.common.utils.UserUtil;
 import com.bishe.netdisc.entity.Directory;
+import com.bishe.netdisc.entity.Role;
+import com.bishe.netdisc.entity.User;
 import com.bishe.netdisc.entity.UserFile;
+import com.bishe.netdisc.entity.common.QueryFile;
+import com.bishe.netdisc.hdfs.HDFSServiceImp;
+import com.bishe.netdisc.mapper.UserDao;
 import com.bishe.netdisc.service.DirectoryService;
+import com.bishe.netdisc.service.RoleService;
 import com.bishe.netdisc.service.UserFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
@@ -24,9 +31,15 @@ public class UserFileController {
     private UserUtil userUtil;
 
     @Autowired
+    private UserDao userDao;
+    @Autowired
     private UserFileService userFileService;
     @Autowired
     private DirectoryService directoryService;
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private HDFSServiceImp hdfsServiceImp;
 
 
     /**
@@ -87,11 +100,19 @@ public class UserFileController {
         if (id == null || id == "" ) {
             throw new CommonException("删除失败");
         }
-        UserFile userFile = userFileService.userFileDao().queryById(id);
-        if (userFile == null){
-            throw new CommonException("删除失败");
+        String[] strArr = id.split(",");
+        for (int i = 0; i < strArr.length; ++i) {
+            System.out.println(strArr[i]);
+//            allId.add(strArr[i] + "");
+            UserFile userFile = userFileService.userFileDao().queryById(strArr[i]);
+            if (userFile == null){
+                throw new CommonException("文件不存在，删除失败");
+            }
+//            allId.add(strArr[i] + "");
         }
-        userFileService.userFileDao().deleteFileByid(id);
+        for (int i = 0; i < strArr.length; ++i) {
+            this.userFileService.deleteById(strArr[i]);
+        }
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -198,4 +219,127 @@ public class UserFileController {
         return new Result(ResultCode.SUCCESS,map);
     }
 
+    // 获取文件列表
+    @PostMapping("/queryfiles")
+    public Result queryFiles(@RequestParam(value = "userid",required = false) String userid,
+                             @RequestParam(value = "filetype",required = false) String filetype,
+                             @RequestParam(value = "query",required = false) String query,
+                             @RequestParam(value = "pagenum",required = false) Integer pagenum,
+                             @RequestParam(value = "pagesize",required = false) Integer pagesize) {
+        List listUserid = new ArrayList();
+        if (userid != null && userid !="") {
+            System.out.println("llllll");
+            String[] strArr = userid.split(",");
+            for (int i = 0; i < strArr.length; ++i) {
+                listUserid.add(strArr[i] + "");
+            }
+        }
+        System.out.println("测试"+listUserid);
+        System.out.println(listUserid.isEmpty());
+        if (filetype == null){
+            filetype ="";
+        }
+        if (query == null){
+            query ="";
+        }
+        if (pagenum == null){
+            pagenum =1;
+        }
+        if (pagesize == null){
+            pagesize =10;
+        }
+        System.out.println("哈哈"+userid);
+        // 获取文件列表
+        List userFiles = this.userFileService.queryFiles(listUserid,filetype,query,pagenum,pagesize);
+        // 获取文件列表个数
+        Long total = this.userFileService.userFileDao().getTotal(listUserid,filetype,query);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("file", userFiles);
+        map.put("total",total);
+        return new Result(ResultCode.SUCCESS, map);
+    }
+
+    // 获取单个文件信息
+    @GetMapping("/getfileone/{id}")
+    public Result getFileOne(@PathVariable("id") String id) {
+        if (id == null || id == "") {
+            throw new CommonException("获取文件失败");
+        }
+        UserFile userFile = this.userFileService.userFileDao().queryById(id);
+        User user = this.userDao.queryById(userFile.getUserid());
+        Map<String,Object> map = new HashMap<>();
+        map.put("id",userFile.getId());
+        map.put("filename",userFile.getFilename());
+        map.put("userid",userFile.getUserid());
+        map.put("username",user.getAccount());
+        map.put("downloadnum",userFile.getDownloadnum());
+        return new Result(ResultCode.SUCCESS,map);
+    }
+
+    // 修改文件
+    @PostMapping("/admin/edit")
+    public Result editFile (UserFile userFile) {
+        if (userFile.getId() == null || userFile.getId() == "") {
+            throw new CommonException("修改文件失败");
+        }
+        UserFile editFile = this.userFileService.userFileDao().queryById(userFile.getId());
+        if (userFile.getFilename() != null){
+            editFile.setFilename(userFile.getFilename());
+        }
+        if (userFile.getDownloadnum() != null) {
+            editFile.setDownloadnum(userFile.getDownloadnum());
+        }
+        this.userFileService.userFileDao().save(editFile);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    // 文件审核
+    @PostMapping("/reviewfile")
+    public Result reviewFile(@RequestParam("id") String id,@RequestParam("filestatus") String filestatus) {
+        if (id == null || id == "" ){
+            throw new CommonException("文件id不能为空,文件审核操作失败！！！");
+        }
+        if (filestatus == null || filestatus == null || filestatus == "" || (!"enable".equals(filestatus) && !"disable".equals(filestatus))) {
+            throw new CommonException("文件状态异常，文件审核操作失败！！！");
+        }
+        System.out.println("000000"+filestatus);
+        String[] strArr = id.split(",");
+        for (int i = 0; i < strArr.length; ++i) {
+            UserFile userFile = userFileService.userFileDao().queryById(strArr[i]);
+            if (userFile == null){
+                throw new CommonException("文件不存在，删除失败");
+            }
+        }
+        Date data = new Date();
+        for (int i = 0; i < strArr.length; ++i) {
+            UserFile userFile = userFileService.userFileDao().queryById(strArr[i]);
+            userFile.setFilestatus(filestatus);
+            userFile.setLastmodifytime(data);
+            this.userFileService.userFileDao().save(userFile);
+        }
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 上传文件
+     */
+    // 文件校验hash
+
+    // HDFS创建目录测试
+    @PostMapping("/test11")
+    public Result uploadFile(String directoryid, MultipartFile file) throws Exception {
+        System.out.println(directoryid);
+        System.out.println(file);
+        if (file.isEmpty()) {
+            throw new CommonException("文件为空，上传失败");
+        }
+        // 获取当前用户
+        User user = this.userUtil.getUser();
+
+        System.out.println("==========="+directoryid+"  文件名:"+file.getOriginalFilename()+" 文件大小:"+file.getSize());
+        this.userFileService.uploadFile(user,file);
+//        this.hdfsServiceImp.upload("/"+file);
+        return new Result(ResultCode.SUCCESS);
+    }
 }

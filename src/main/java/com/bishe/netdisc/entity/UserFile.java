@@ -34,6 +34,10 @@ public class UserFile {
     private String hash;
     // 文件类型
     private String type;
+    // 文件分类
+    private String typename;
+    // 文件下载次数
+    private Integer downloadnum;
     // 用户id
     private String userid;
     // 最后一次修改时间

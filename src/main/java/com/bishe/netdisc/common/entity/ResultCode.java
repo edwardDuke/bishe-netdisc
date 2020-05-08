@@ -12,6 +12,7 @@ package com.bishe.netdisc.common.entity;
 public enum ResultCode {
 
     SUCCESS(true,200,"操作成功！"),
+    SAVEFAIL(false,400,"存储空间不足"),
     //---系统错误返回码-----
     FAIL(false,10001,"操作失败"),
     UNAUTHENTICATED(false,10002,"您还未登录"),

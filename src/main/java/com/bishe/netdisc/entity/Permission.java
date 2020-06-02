@@ -21,7 +21,9 @@ public class Permission {
     //权限名
     private String name;
     //权限代码
-    private String perCode;
+    private String percode;
+    //上一级
+    private String pid;
     // 创建时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;

@@ -46,7 +46,6 @@ public class DownloadService {
     public void downloadMore(List<Directory> directories, List<UserFile> userFiles, ZipOutputStream zos, String path ) throws Exception{
         // 1 目录haha1 文件空
         // 2 目录重命名 文件 bbb
-
        for (Directory directory:directories){
            String filepath = path + directory.getDirectoryname() +"/" ;
            System.out.println("当前目录"+filepath);

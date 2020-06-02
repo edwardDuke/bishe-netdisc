@@ -4,15 +4,18 @@ import com.bishe.netdisc.common.entity.Result;
 import com.bishe.netdisc.common.entity.ResultCode;
 import com.bishe.netdisc.common.exception.CommonException;
 import com.bishe.netdisc.common.utils.common.DateUtil;
+import com.bishe.netdisc.entity.Permission;
 import com.bishe.netdisc.entity.Role;
+import com.bishe.netdisc.entity.RolePermission;
+import com.bishe.netdisc.mapper.PermissionDao;
+import com.bishe.netdisc.mapper.RolePermissionDao;
 import com.bishe.netdisc.service.RoleService;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author third_e
@@ -24,6 +27,10 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private PermissionDao permissionDao;
+    @Autowired
+    private RolePermissionDao rolePermissionDao;
 
     // 获取所有角色
     @GetMapping("/all")
@@ -59,6 +66,7 @@ public class RoleController {
 
     // 添加角色
     @PostMapping("/admin/add")
+    @RequiresPermissions(logical = Logical.AND, value = {"/role/admin/add"})
     public Result add (Role role) {
         if (role.getName() == null || role.getName() == "") {
             throw new CommonException("角色名不能为空");
@@ -99,6 +107,7 @@ public class RoleController {
 
     // 编辑角色
     @PostMapping("/admin/edit")
+    @RequiresPermissions(logical = Logical.AND, value = {"/role/admin/edit"})
     public Result edit (Role role) {
         if (role.getId() == null || role.getId() == "") {
             throw new CommonException("角色id不能为空");
@@ -131,6 +140,7 @@ public class RoleController {
 
     // 删除角色
     @GetMapping("/admin/delete/{id}")
+    @RequiresPermissions(logical = Logical.AND, value = {"/role/admin/delete"})
     public Result delete (@PathVariable("id") String id ) {
         if (id == null || id == "") {
             throw new CommonException("删除失败");
@@ -141,6 +151,69 @@ public class RoleController {
             throw new CommonException("删除的角色不存在");
         }
         this.roleService.roleDao().deleteById(id);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    // 获取权限列表
+    @GetMapping("/getpermission")
+    public Result getpermission () {
+
+        List list = new ArrayList();
+        List<Permission> permissions = this.permissionDao.getPermissionBypid("0");
+        for (Permission permission:permissions) {
+            Map<String,Object> map = new HashMap<>();
+            List<Permission> permissionsSon = this.permissionDao.getPermissionBypid(permission.getId());
+            map.put("id",permission.getId());
+            map.put("name",permission.getName());
+//            map.put("disabled",true);
+            List list1 = new ArrayList();
+            for (Permission per:permissionsSon) {
+                Map<String,Object> map1 = new HashMap<>();
+                map1.put("id",per.getId());
+                map1.put("name",per.getName());
+                list1.add(map1);
+            }
+            map.put("children",list1);
+            list.add(map);
+        }
+        System.out.println(list);
+        System.out.println("====================");
+        return new Result(ResultCode.SUCCESS,list);
+    }
+    @GetMapping("/hasper/{id}")
+    public Result gethasPermission(@PathVariable("id") String id) {
+        RolePermission rolePermission = new RolePermission();
+        rolePermission.setRoleid(id);
+        List<RolePermission> rolePermissions = this.rolePermissionDao.queryList(rolePermission);
+        List<String> list = new ArrayList<>();
+        for (RolePermission rolePermission1:rolePermissions) {
+            list.add(rolePermission1.getPermissionid());
+        }
+        System.out.println("========================");
+        System.out.println(list);
+        return new Result(ResultCode.SUCCESS,list);
+    }
+    @PostMapping("/changePer")
+    public Result changePer (String roleid, String idStr) {
+        System.out.println("111111");
+        if (roleid == null || roleid == "") {
+            throw new CommonException("操作失败");
+        }
+        String [] perIds = idStr.split(",");
+        RolePermission rolePermission = new RolePermission();
+        rolePermission.setRoleid(roleid);
+        this.rolePermissionDao.deleteByRoleId(roleid);
+        for (int i = 0;i<perIds.length;i++) {
+            Permission permission = this.permissionDao.queryById(perIds[i]);
+            if (permission == null) {continue;}
+            if (!"0".equals(permission.getPid())){
+                rolePermission.setId(null);
+                rolePermission.setPermissionid(permission.getId());
+                rolePermission.setCreateDate(new Date());
+                this.rolePermissionDao.save(rolePermission);
+            }
+        }
+
         return new Result(ResultCode.SUCCESS);
     }
 

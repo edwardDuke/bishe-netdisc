@@ -10,6 +10,8 @@ import com.bishe.netdisc.mapper.DirectoryDao;
 import com.bishe.netdisc.mapper.UserFileDao;
 import com.bishe.netdisc.service.DownloadService;
 import org.apache.hadoop.fs.FileSystem;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +47,7 @@ public class DownloadController {
 
     // 单文件下载
     @PostMapping("/onefile")
+    @RequiresPermissions(logical = Logical.AND, value = {"/aaa/download"})
     public Result downloadOne (HttpServletResponse response, HttpServletRequest request, UserFile userFile) {
 
         System.out.println("******"+userFile);
@@ -74,6 +77,7 @@ public class DownloadController {
 
     // 多文件下载
     @PostMapping("/morefile")
+    @RequiresPermissions(logical = Logical.AND, value = {"/aaa/download"})
     public String downloadmore(HttpServletResponse response, String id, String type) throws Exception{
         if (id == null || id == "" || type ==null || type == ""){
             throw new CommonException("下载失败");

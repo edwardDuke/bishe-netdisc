@@ -13,6 +13,8 @@ import com.bishe.netdisc.entity.common.dire.MoveAndCopy;
 import com.bishe.netdisc.service.DirectoryService;
 import com.bishe.netdisc.service.UserFileService;
 import javassist.bytecode.analysis.Type;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

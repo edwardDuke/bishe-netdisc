@@ -13,7 +13,9 @@ import com.bishe.netdisc.entity.common.UserForm;
 import com.bishe.netdisc.service.RoleService;
 import com.bishe.netdisc.service.UserService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -217,6 +219,7 @@ public class UserController {
 
     // 获取每个角色对应的用户列表
     @GetMapping("/all")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/all"})
     public Result getAllUsers() {
         List all = new ArrayList();
         // 获取所有角色
@@ -242,6 +245,7 @@ public class UserController {
 
     // 获取所有用户
     @GetMapping("/queryusers")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/queryusers"})
     public Result queryUsers(@RequestParam(value = "query", required = false) String query,
                              @RequestParam(value = "pagenum", required = false) Integer pagenum,
                              @RequestParam(value = "pagesize", required = false) Integer pagesize) {
@@ -266,6 +270,7 @@ public class UserController {
 
     // 获取用户信息
     @GetMapping("/admin/{id}")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/admin/id"})
     public Result adminGetUserById (@PathVariable("id") String id) {
         if (id == null || id == "") {
             throw new CommonException("获取失败，id不能为空");
@@ -279,6 +284,7 @@ public class UserController {
 
     // 编辑用户
     @PostMapping("/admin/edit")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/admin/edit"})
     public Result adminEditUser (UserForm user) {
 
         if (user.getId() == null || user.getId() == "") {
@@ -312,6 +318,7 @@ public class UserController {
 
     // 添加用户
     @PostMapping("/admin/add")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/admin/add"})
     public Result adminAdd (UserForm user) {
         if (user.getAccount() == null || user.getAccount() == ""){
             throw new CommonException("用户账号不能为空");
@@ -354,6 +361,7 @@ public class UserController {
 
     // 删除用户
     @GetMapping("/admin/delete")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/admin/delete"})
     public Result deleteUser (@RequestParam("id") String id ) {
         if (id == null || id == "" ) {
             throw new CommonException("删除用户失败");
@@ -375,6 +383,7 @@ public class UserController {
 
     // 修改用户状态
     @GetMapping("/admin/changstatus")
+    @RequiresPermissions(logical = Logical.AND, value = {"/user/admin/changstatus"})
     public Result changStatus(@RequestParam("id") String id, @RequestParam("status") String status) {
 
         if (id ==null || id == "" || status == null || status == ""){

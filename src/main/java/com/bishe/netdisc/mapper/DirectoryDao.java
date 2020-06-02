@@ -3,6 +3,7 @@ package com.bishe.netdisc.mapper;
 import com.bishe.netdisc.entity.Directory;
 import com.bishe.netdisc.mapper.baseDao.MongoDbDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
@@ -47,6 +48,7 @@ public class DirectoryDao extends MongoDbDao<Directory> {
         Query query = new Query();
         Criteria criteria = Criteria.where("pid").is(pid).and("userid").is(userid);
         query.addCriteria(criteria);
+        query.with(Sort.by(Sort.Order.desc("lastmodifytime")));
         return this.mongoTemplate.find(query,Directory.class);
     }
 

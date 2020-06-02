@@ -15,6 +15,8 @@ import com.bishe.netdisc.mapper.RoleDao;
 import com.bishe.netdisc.mapper.UserDao;
 import com.bishe.netdisc.mapper.UserFileDao;
 import org.apache.hadoop.fs.FileStatus;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +57,7 @@ public class UploadController {
      *
      */
     @PostMapping("/chunkupload")
+    @RequiresPermissions(logical = Logical.AND, value = {"/aaa/upload"})
     public Result chunkUpload(Chunk chunk) throws Exception{
         // 获取文件流
         MultipartFile file = chunk.getFile();
@@ -90,6 +93,7 @@ public class UploadController {
      * 检查当前分片是否存在
      */
     @GetMapping("/chunkupload")
+    @RequiresPermissions(logical = Logical.AND, value = {"/aaa/upload"})
     public Result chunkUpload(Chunk chunk,  HttpServletResponse response) throws Exception{
         // 获取当前用户
         User user = this.userUtil.getUser();
@@ -139,8 +143,20 @@ public class UploadController {
             if (index != -1){
                 type = chunk.getFilename().substring(index+1);
                 String filename = chunk.getFilename().substring(0,index);
-                if (filename.equals(userFile.getFilename())){
-                    filename = filename+DateUtil.getDateByFormatString("yyyyMMdd",date);
+                queryfile.setDirectoryid(chunk.getDirId());
+                queryfile.setFilestatus("enable");
+                UserFile userFiledir  = this.userFileDao.queryOne(queryfile);
+                System.out.println(filename);
+                System.out.println(userFiledir);
+                System.out.println(userFiledir != null);
+                if (userFiledir != null ){
+                    if (filename.equals(userFiledir.getFilename())) {
+                        System.out.println("====================="+userFile);
+                        filename = filename+DateUtil.getDateByFormatString("yyyyMMdd",date);
+                    }
+                    chunk.setFilename(filename);
+                }else {
+                    System.out.println("=====================+++++"+userFile);
                     chunk.setFilename(filename);
                 }
             }
@@ -165,7 +181,6 @@ public class UploadController {
         // 查询文件是否有上传过
         // 1、获取存储路径，并查询文件是否存在
         String temPath = TEMPPATH + "/" + md5 ;
-
         if(!this.hdfsService.exitFile(temPath)){
             // 如果文件不存在不返回信息，表示全部上传
             return new Result(ResultCode.SUCCESS,map);
@@ -174,7 +189,7 @@ public class UploadController {
             List all = this.hdfsService.ls(temPath);
             System.out.println(all);
             map.put("uploaded",all); // 返回已存储块
-            map.put("needMerge",false); // 不需要合并
+            map.put("needMerge",true); // 需要合并
             return new Result(ResultCode.SUCCESS,map);
         }
     }

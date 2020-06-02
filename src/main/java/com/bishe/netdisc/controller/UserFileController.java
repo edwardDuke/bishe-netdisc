@@ -14,6 +14,8 @@ import com.bishe.netdisc.mapper.UserDao;
 import com.bishe.netdisc.service.DirectoryService;
 import com.bishe.netdisc.service.RoleService;
 import com.bishe.netdisc.service.UserFileService;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -279,6 +281,7 @@ public class UserFileController {
 
     // 修改文件
     @PostMapping("/admin/edit")
+    @RequiresPermissions(logical = Logical.AND, value = {"/file/admin/edit"})
     public Result editFile (UserFile userFile) {
         if (userFile.getId() == null || userFile.getId() == "") {
             throw new CommonException("修改文件失败");
@@ -296,6 +299,7 @@ public class UserFileController {
 
     // 文件审核
     @PostMapping("/reviewfile")
+    @RequiresPermissions(logical = Logical.AND, value = {"/file/reviewfile"})
     public Result reviewFile(@RequestParam("id") String id,@RequestParam("filestatus") String filestatus) {
         if (id == null || id == "" ){
             throw new CommonException("文件id不能为空,文件审核操作失败！！！");
@@ -316,7 +320,14 @@ public class UserFileController {
             UserFile userFile = userFileService.userFileDao().queryById(strArr[i]);
             userFile.setFilestatus(filestatus);
             userFile.setLastmodifytime(data);
+            User user = this.userDao.queryById(userFile.getUserid());
+            if (user.getUsestoragesize()-userFile.getFilesize()>0){
+                user.setUsestoragesize(user.getUsestoragesize()-userFile.getFilesize());
+            }else {
+                user.setUsestoragesize(Double.valueOf(0));
+            }
             this.userFileService.userFileDao().save(userFile);
+            this.userDao.save(user);
         }
         return new Result(ResultCode.SUCCESS);
     }

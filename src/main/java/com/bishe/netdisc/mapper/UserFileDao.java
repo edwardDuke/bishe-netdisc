@@ -91,6 +91,7 @@ public class UserFileDao extends MongoDbDao<UserFile> {
         query.addCriteria(criteria.and("typename").is(type));
         query.addCriteria(criteria.and("userid").is(userId));
         query.addCriteria(criteria.and("filestatus").is("enable"));
+        query.with(Sort.by(Sort.Order.desc("lastmodifytime")));
         return this.mongoTemplate.find(query,UserFile.class);
     }
     public List<UserFile> queryFiles (List alluserid, String filetype, String queryName, Integer pagenum, Integer pagesize) {

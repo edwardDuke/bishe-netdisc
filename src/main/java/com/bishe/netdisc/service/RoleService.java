@@ -1,15 +1,18 @@
 package com.bishe.netdisc.service;
 
 import com.bishe.netdisc.common.utils.common.DateUtil;
+import com.bishe.netdisc.entity.Permission;
 import com.bishe.netdisc.entity.Role;
+import com.bishe.netdisc.entity.RolePermission;
+import com.bishe.netdisc.mapper.PermissionDao;
 import com.bishe.netdisc.mapper.RoleDao;
+import com.bishe.netdisc.mapper.RolePermissionDao;
+import com.bishe.netdisc.mapper.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Resource;
+import java.util.*;
 
 /**
  * @author third_e
@@ -20,6 +23,11 @@ public class RoleService {
 
     @Autowired
     private RoleDao roleDao;
+    @Autowired
+    private RolePermissionDao rolePermissionDao;
+    @Autowired
+    private PermissionDao permissionDao;
+
 
     public RoleDao roleDao(){
         return this.roleDao;
@@ -76,5 +84,22 @@ public class RoleService {
         }
         return all;
     }
+    // 获取当前角色所有权限
+    public Set<String> listPermission (String roleId) {
+        Set<String> result = new HashSet<>();
+        List<RolePermission> rolePermissions = rolePermissionDao.getPermissionByRoleId(roleId);
+        for (RolePermission rolePermission : rolePermissions) {
+            Permission permission = permissionDao.queryById(rolePermission.getPermissionid());
+            System.out.println(permission);
+            result.add(permission.getPercode());
+        }
+
+        return result;
+    }
+
+//    // 获取权限列表
+//    public List getallpermission() {
+//
+//    }
 
 }

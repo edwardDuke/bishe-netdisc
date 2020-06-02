@@ -43,7 +43,6 @@ public class HDFSServiceImp implements HDFSService {
 //        configuration.set("dfs.namenode.rpc-address.ns1.nn1", "node1:9000");
 //        configuration.set("dfs.namenode.rpc-address.ns1.nn2", "node2:9000");
 //        configuration.set("dfs.client.failover.proxy.provider.ns1", "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider");
-
         return configuration;
     }
 
@@ -134,7 +133,6 @@ public class HDFSServiceImp implements HDFSService {
         int c;
         while ((c = in.read(buffer)) != -1) {
             md5.update(buffer, 0, c);
-
         }
         BigInteger bi = new BigInteger(1, md5.digest());
         String value = bi.toString(16);

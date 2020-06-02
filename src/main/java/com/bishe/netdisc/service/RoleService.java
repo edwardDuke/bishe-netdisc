@@ -90,7 +90,7 @@ public class RoleService {
         List<RolePermission> rolePermissions = rolePermissionDao.getPermissionByRoleId(roleId);
         for (RolePermission rolePermission : rolePermissions) {
             Permission permission = permissionDao.queryById(rolePermission.getPermissionid());
-            System.out.println(permission);
+//            System.out.println(permission);
             result.add(permission.getPercode());
         }
 

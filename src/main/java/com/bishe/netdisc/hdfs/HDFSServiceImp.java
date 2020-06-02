@@ -4,16 +4,19 @@ import com.bishe.netdisc.entity.UserFile;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.IOUtils;
+import org.apache.hadoop.security.UserGroupInformation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.net.URI;
 import java.security.MessageDigest;
+import java.security.PrivilegedExceptionAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,20 +32,42 @@ public class HDFSServiceImp implements HDFSService {
     private String path;
     @Value("${hdfs.user}")
     private String user;
-
+    private Configuration conf;
+    private FileSystem fss;
 
     /**
      * 获取HDFS配置信息
      */
     public Configuration getHDFSConfig() {
+        //设置远程登录的用户（即服务器上操作hadoop的用户），默认是当前机器的用户，如果不设置会报拒绝登录的错误
+        UserGroupInformation ugi = UserGroupInformation.createRemoteUser("hadoop3");
         Configuration configuration = new Configuration();
-        // 全分布使用需要配置一下信息
+//        // 全分布使用需要配置一下信息
 //        configuration.set("fs.defaultFS","hdfs://ns1");//nameservices地址
 //        configuration.set("dfs.nameservices", "ns1");
 //        configuration.set("dfs.ha.namenodes.ns1", "nn1,nn2");
-//        configuration.set("dfs.namenode.rpc-address.ns1.nn1", "node1:9000");
-//        configuration.set("dfs.namenode.rpc-address.ns1.nn2", "node2:9000");
+//        configuration.set("dfs.namenode.rpc-address.ns1.nn1", "192.168.88.131:9000");
+//        configuration.set("dfs.namenode.rpc-address.ns1.nn2", "192.168.88.132:9000");
+//        configuration.set("hadoop.job.ugi", "hadoop3");
 //        configuration.set("dfs.client.failover.proxy.provider.ns1", "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider");
+        try {
+            ugi.doAs((PrivilegedExceptionAction) () -> {
+                try {
+                    //操作HA集群有两种方式，1.通过conf一个个的设置属性，2.将hdfs的两个配置文件放到resource目录下，new Configuration()的时候会自动读取，这种方法最简单
+                    conf = new Configuration();
+                    //设置集群别名，而不是具体的地址，避免硬编码，它会自动的选择active节点进行操作
+                    conf.set("fs.defaultFS", "hdfs://ns1");
+                    conf.set("hadoop.job.ugi", "hadoop3");
+                    configuration.set("hadoop.job.ugi", "hadoop3");
+                    fss = FileSystem.get(conf);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return configuration;
     }
 
@@ -52,7 +77,7 @@ public class HDFSServiceImp implements HDFSService {
     public FileSystem getFileSystem() throws Exception{
         //配置NameNode地址
         URI uri=new URI(path);
-        //指定用户名,获取FileSystem对象
+        //伪分布：指定用户名,获取FileSystem对象
         FileSystem fs=FileSystem.get(uri,getHDFSConfig(),user);
         return fs;
     }

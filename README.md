@@ -1,4 +1,4 @@
-### 项目前端部分[输入链接说明](http://gitee.com/third_e/bishe-netdisc-web?_from=gitee_search)
+### 项目前端部分：[前端代码](http://gitee.com/third_e/bishe-netdisc-web?_from=gitee_search)
 
 ### 一、Hadoop安装
 

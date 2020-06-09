@@ -83,10 +83,10 @@
  **1.2.2安装** 
 
 （1）修改配置文件：
-    - hadoop-env.sh
+    hadoop-env.sh
     export JAVA_HOME=/home/hadoop3/jdk
 
-    - hdfs-site.xml
+    hdfs-site.xml
     <!--表示数据块的冗余度，默认：3-->
     
     <property>
@@ -94,51 +94,50 @@
       <value>1</value>
     </property>
 
-core-site.xml
-<!--配置NameNode地址,9000是RPC通信端口-->
+    core-site.xml
+    <!--配置NameNode地址,9000是RPC通信端口-->
+    
+    <property>
+       <name>fs.defaultFS</name>
+       <value>hdfs://node1:9000</value>
+    </property>	
+    
+    <!--HDFS数据保存在Linux的哪个目录，默认值是Linux的tmp目录-->
+    <property>
+       <name>hadoop.tmp.dir</name>
+       <value>/home/hadoop3/hadoop/tmp</value>
+    </property>	
 
-<property>
-   <name>fs.defaultFS</name>
-   <value>hdfs://node1:9000</value>
-</property>	
-
-<!--HDFS数据保存在Linux的哪个目录，默认值是Linux的tmp目录-->
-<property>
-   <name>hadoop.tmp.dir</name>
-   <value>/home/hadoop3/hadoop/tmp</value>
-</property>	
-
-
-mapred-site.xml
-默认没有（cp mapred-site.xml.template mapred-site.xml）
-<!--MR运行的框架-->
-<property>
-   <name>mapreduce.framework.name</name>
-   <value>yarn</value>
-</property>	
-
-yarn-site.xml
-<!--Yarn的主节点RM的位置-->
-<property>
-   <name>yarn.resourcemanager.hostname</name>
-   <value>node1</value>
-</property>	
-<!--MapReduce运行方式：shuffle洗牌-->
-<property>
-   <name>yarn.nodemanager.aux-services</name>
-   <value>mapreduce_shuffle</value>
-</property>	
+    mapred-site.xml
+    默认没有（cp mapred-site.xml.template mapred-site.xml）
+    <!--MR运行的框架-->
+    <property>
+       <name>mapreduce.framework.name</name>
+       <value>yarn</value>
+    </property>	
+    
+    yarn-site.xml
+    <!--Yarn的主节点RM的位置-->
+    <property>
+       <name>yarn.resourcemanager.hostname</name>
+       <value>node1</value>
+    </property>	
+    <!--MapReduce运行方式：shuffle洗牌-->
+    <property>
+       <name>yarn.nodemanager.aux-services</name>
+       <value>mapreduce_shuffle</value>
+    </property>	
 
 
 （2）格式化
-hdfs namenode -format
+    hdfs namenode -format
 
 （3）启动停止Hadoop的环境
-start-all.sh
-stop-all.sh
+    start-all.sh
+    stop-all.sh
 （4）测试
-查看进程：
-jps
+    查看进程：
+    jps
 
 通过Web界面：
 HDFS:  http://191.168.88.130:50070  http://191.168.88.130:50090

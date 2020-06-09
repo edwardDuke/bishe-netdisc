@@ -1,0 +1,2735 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : localhost_27017
+ Source Server Type    : MongoDB
+ Source Server Version : 40203
+ Source Host           : localhost:27017
+ Source Schema         : webdisk
+
+ Target Server Type    : MongoDB
+ Target Server Version : 40203
+ File Encoding         : 65001
+
+ Date: 07/06/2020 22:40:25
+*/
+
+
+// ----------------------------
+// Collection structure for directory
+// ----------------------------
+db.getCollection("directory").drop();
+db.createCollection("directory");
+
+// ----------------------------
+// Documents of directory
+// ----------------------------
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e79b3c9e246000046007568"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-03-24T00:00:00.000Z"),
+    lastmodifytime: ISODate("2020-03-24T00:00:00.000Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e79b44ee24600004600756a"),
+    directoryname: "目录3",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-03-24T00:00:00.000Z"),
+    lastmodifytime: ISODate("2020-04-20T15:51:01.633Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e79b4e0e24600004600756c"),
+    directoryname: "目录3.1",
+    pid: "5e79b44ee24600004600756a",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("1970-01-01T00:00:00.000Z"),
+    lastmodifytime: ISODate("2020-04-20T15:51:01.905Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e79b552e24600004600756d"),
+    directoryname: "third_e@qq.com",
+    pid: "0",
+    createtime: ISODate("1970-01-01T00:00:00.000Z"),
+    lastmodifytime: ISODate("1970-01-01T00:00:00.000Z"),
+    userid: "5e79b23de246000046007566"
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e79b62be24600004600756e"),
+    directoryname: "third_e@163.com",
+    pid: "0",
+    userid: "5e79b284e246000046007567",
+    createtime: ISODate("1970-01-01T00:00:00.000Z"),
+    lastmodifytime: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9aa15954050000d7004ed2"),
+    directoryname: "目录3.2",
+    pid: "5e79b44ee24600004600756a",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T00:00:00.000Z"),
+    lastmodifytime: ISODate("2020-04-20T15:51:01.911Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9aa4c554050000d7004ed3"),
+    directoryname: "目录3.2.1",
+    pid: "5e9aa15954050000d7004ed2",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T00:00:00.000Z"),
+    lastmodifytime: ISODate("2020-04-20T15:51:01.916Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b0647760518216ff01d09"),
+    directoryname: "测试查询目录和文件",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:53:11.6Z"),
+    lastmodifytime: ISODate("2020-04-20T15:51:01.932Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b0654760518216ff01d0a"),
+    directoryname: "测试查询目录和文件1",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:53:24.867Z"),
+    lastmodifytime: ISODate("2020-04-18T13:53:24.867Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b0659760518216ff01d0b"),
+    directoryname: "测试查询目录和文件2",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:53:29.273Z"),
+    lastmodifytime: ISODate("2020-04-18T13:53:29.273Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b0692760518216ff01d0c"),
+    directoryname: "测试删除目录和文件",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:54:26.945Z"),
+    lastmodifytime: ISODate("2020-04-18T13:54:26.945Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b06d1760518216ff01d0f"),
+    directoryname: "测试目录复制到",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:55:29.797Z"),
+    lastmodifytime: ISODate("2020-04-18T13:55:29.797Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9b06d3760518216ff01d10"),
+    directoryname: "测试目录复制到1",
+    pid: "5e79b44ee24600004600756a",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-18T13:55:31.96Z"),
+    lastmodifytime: ISODate("2020-04-20T16:31:38.5Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9d2956c827e733b178ae55"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-04-20T04:47:18.974Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9d3d3f8f173135d4bd4c80"),
+    directoryname: "user",
+    pid: "0",
+    userid: "5e9d3d3f8f173135d4bd4c7f",
+    createtime: ISODate("2020-04-20T06:12:15.027Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9d572cdfe04b5fc8a3ab37"),
+    directoryname: "测试",
+    pid: "5e9b06d1760518216ff01d0f",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-20T08:02:52.404Z"),
+    lastmodifytime: ISODate("2020-04-21T17:42:37.198Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9f040e24fc3b6f6f0b6654"),
+    directoryname: "测试2020-04-21",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-21T14:32:46.344Z"),
+    lastmodifytime: ISODate("2020-04-21T14:32:46.344Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9f043824fc3b6f6f0b6656"),
+    directoryname: "测试目录复制到2020-04-21",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-21T14:33:28.495Z"),
+    lastmodifytime: ISODate("2020-04-21T14:33:28.495Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5e9f04ca24fc3b6f6f0b6658"),
+    directoryname: "哈哈1",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-21T14:35:54.611Z"),
+    lastmodifytime: ISODate("2020-04-24T09:58:40.049Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea2b318a4b74606d4995585"),
+    directoryname: "重名啊",
+    pid: "5e9f04ca24fc3b6f6f0b6658",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-24T09:36:24.692Z"),
+    lastmodifytime: ISODate("2020-04-24T10:01:11.73Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea6a6edce197868cae8de11"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-27T09:33:33.712Z"),
+    lastmodifytime: ISODate("2020-04-27T09:33:33.712Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea6a6edce197868cae8de12"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-27T09:33:33.809Z"),
+    lastmodifytime: ISODate("2020-04-27T09:33:33.809Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea6ed52dcfa3e53af0be5dd"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-27T14:33:54.729Z"),
+    lastmodifytime: ISODate("2020-04-27T14:33:54.729Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea6ed6fdcfa3e53af0be5de"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-27T14:34:23.095Z"),
+    lastmodifytime: ISODate("2020-04-27T14:34:23.095Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea6ed6fdcfa3e53af0be5df"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-04-27T14:34:23.107Z"),
+    lastmodifytime: ISODate("2020-04-27T14:34:23.107Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea7f7d2372a423c1414fb8d"),
+    directoryname: "test2",
+    pid: "0",
+    userid: "5ea7f7d2372a423c1414fb8c",
+    createtime: ISODate("2020-04-28T09:30:58.367Z"),
+    lastmodifytime: ISODate("2020-04-28T09:30:58.367Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea7fb87c58e6b26736078ec"),
+    directoryname: "test3",
+    pid: "0",
+    userid: "5ea7fb87c58e6b26736078eb",
+    createtime: ISODate("2020-04-28T09:46:47.825Z"),
+    lastmodifytime: ISODate("2020-04-28T09:46:47.825Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea8f95067476430e8ab8092"),
+    directoryname: "test4",
+    pid: "0",
+    userid: "5ea8f95067476430e8ab8091",
+    createtime: ISODate("2020-04-29T03:49:36.128Z"),
+    lastmodifytime: ISODate("2020-04-29T03:49:36.128Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea8fbb42b02f61738372062"),
+    directoryname: "test5",
+    pid: "0",
+    userid: "5ea8fbb42b02f61738372061",
+    createtime: ISODate("2020-04-29T03:59:48.37Z"),
+    lastmodifytime: ISODate("2020-04-29T03:59:48.37Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ea9049220c5a57815202fd2"),
+    directoryname: "啊",
+    pid: "5ea8f95067476430e8ab8092",
+    userid: "5ea8f95067476430e8ab8091",
+    createtime: ISODate("2020-04-29T04:37:38.871Z"),
+    lastmodifytime: ISODate("2020-04-29T04:37:38.871Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb260d702c85c527dfcf3af"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:01:43.008Z"),
+    lastmodifytime: ISODate("2020-05-06T07:01:43.008Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26a0255a7c80f69576e23"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:40:50.854Z"),
+    lastmodifytime: ISODate("2020-05-06T07:40:50.854Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26a0855a7c80f69576e24"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:40:56.131Z"),
+    lastmodifytime: ISODate("2020-05-06T07:40:56.131Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26a0d55a7c80f69576e25"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:41:01.836Z"),
+    lastmodifytime: ISODate("2020-05-06T07:41:01.836Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26a1155a7c80f69576e26"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:41:05.797Z"),
+    lastmodifytime: ISODate("2020-05-06T07:41:05.797Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26a8855a7c80f69576e27"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:43:04.158Z"),
+    lastmodifytime: ISODate("2020-05-06T07:43:04.158Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26c1c14106b01aba20ed0"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:49:48.484Z"),
+    lastmodifytime: ISODate("2020-05-06T07:49:48.484Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26ca014106b01aba20ed2"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:52:00.182Z"),
+    lastmodifytime: ISODate("2020-05-06T07:52:00.182Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26d2b4ca14446680bb3d2"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:54:19.856Z"),
+    lastmodifytime: ISODate("2020-05-06T07:54:19.856Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb26d324ca14446680bb3d3"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-06T07:54:26.832Z"),
+    lastmodifytime: ISODate("2020-05-06T07:54:26.832Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb52147b8f6fa7b7b12d689"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:07:18.975Z"),
+    lastmodifytime: ISODate("2020-05-08T09:07:18.975Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb522bab8f6fa7b7b12d68d"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:13:30.434Z"),
+    lastmodifytime: ISODate("2020-05-08T09:13:30.434Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb526e14705077d713268df"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:31:13.89Z"),
+    lastmodifytime: ISODate("2020-05-08T09:31:13.89Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb5285c4705077d713268e3"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:37:32.157Z"),
+    lastmodifytime: ISODate("2020-05-08T09:37:32.157Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb528644705077d713268e4"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:37:40.859Z"),
+    lastmodifytime: ISODate("2020-05-08T09:37:40.859Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb5286a4705077d713268e5"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:37:46.728Z"),
+    lastmodifytime: ISODate("2020-05-08T09:37:46.728Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5eb5287c4705077d713268e6"),
+    directoryname: "test123",
+    pid: "0",
+    userid: "5eb52147b8f6fa7b7b12d688",
+    createtime: ISODate("2020-05-08T09:38:04.653Z"),
+    lastmodifytime: ISODate("2020-05-08T09:38:04.653Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ebb906b5626c803c16b1632"),
+    directoryname: "哈哈1",
+    pid: "5e9f043824fc3b6f6f0b6656",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-13T06:15:07.917Z"),
+    lastmodifytime: ISODate("2020-05-13T06:15:07.917Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1633"),
+    directoryname: "重名啊",
+    pid: "5ebb906b5626c803c16b1632",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-13T06:15:08.016Z"),
+    lastmodifytime: ISODate("2020-05-13T06:15:08.016Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1634"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-13T06:15:08.022Z"),
+    lastmodifytime: ISODate("2020-05-13T06:15:08.022Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1636"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-13T06:15:08.043Z"),
+    lastmodifytime: ISODate("2020-05-13T06:15:08.043Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1638"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-13T06:15:08.05Z"),
+    lastmodifytime: ISODate("2020-05-13T06:15:08.05Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfdbf2f8b96f6b911343aa"),
+    directoryname: "嘿嘿嘿",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T15:42:42.926Z"),
+    lastmodifytime: ISODate("2020-05-28T15:48:41.683Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfdfd058e4632932102b54"),
+    directoryname: "啊啊是啊啊",
+    pid: "5e79b3c9e246000046007568",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T15:59:12.671Z"),
+    lastmodifytime: ISODate("2020-06-02T06:04:58.307Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe0ae58e4632932102b56"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:02:54.342Z"),
+    lastmodifytime: ISODate("2020-05-28T16:02:54.342Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7c24c086818ccd11719"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:06.836Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:06.836Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd1171c"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.64Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.64Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd1171d"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.652Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.652Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd1171e"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.663Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.663Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd1171f"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.675Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.675Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd11720"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.684Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.684Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd11721"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.695Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.695Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd11722"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.707Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.707Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd11723"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.717Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.717Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ecfe7eb4c086818ccd11724"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-28T16:33:47.729Z"),
+    lastmodifytime: ISODate("2020-05-28T16:33:47.729Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf0496b2a706dcf9867f"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T08:59:48.258Z"),
+    lastmodifytime: ISODate("2020-05-29T08:59:48.258Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf4396b2a706dcf98680"),
+    directoryname: "目录一",
+    pid: "5e9d2956c827e733b178ae55",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:00:51.714Z"),
+    lastmodifytime: ISODate("2020-05-29T09:00:51.714Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf4996b2a706dcf98681"),
+    directoryname: "目录二",
+    pid: "5e9d2956c827e733b178ae55",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:00:57.055Z"),
+    lastmodifytime: ISODate("2020-05-29T09:00:57.055Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf5096b2a706dcf98682"),
+    directoryname: "目录三",
+    pid: "5e9d2956c827e733b178ae55",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:01:04.257Z"),
+    lastmodifytime: ISODate("2020-06-03T05:28:55.988Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf5f96b2a706dcf98683"),
+    directoryname: "学习资料",
+    pid: "5ed0cf4396b2a706dcf98680",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:01:19.384Z"),
+    lastmodifytime: ISODate("2020-05-29T09:01:19.384Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf7096b2a706dcf98684"),
+    directoryname: "电影资料",
+    pid: "5ed0cf4396b2a706dcf98680",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:01:36.985Z"),
+    lastmodifytime: ISODate("2020-05-29T09:01:36.985Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0cf7e96b2a706dcf98685"),
+    directoryname: "我的图片",
+    pid: "5ed0cf4996b2a706dcf98681",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T09:01:50.833Z"),
+    lastmodifytime: ISODate("2020-05-29T09:36:17.878Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed0d2c096b2a706dcf98687"),
+    directoryname: "abc",
+    pid: "0",
+    userid: "5ed0d2c096b2a706dcf98686",
+    createtime: ISODate("2020-05-29T09:15:44.802Z"),
+    lastmodifytime: ISODate("2020-05-29T09:15:44.802Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1334c3bad4269bea2ace4"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T16:07:40.789Z"),
+    lastmodifytime: ISODate("2020-05-29T16:07:40.789Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed135ca68bb5278b9137bd9"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T16:18:18.42Z"),
+    lastmodifytime: ISODate("2020-05-29T16:18:18.42Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed135ca68bb5278b9137bda"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-29T16:18:18.458Z"),
+    lastmodifytime: ISODate("2020-05-29T16:18:18.458Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed13be068bb5278b9137bdc"),
+    directoryname: "啊啊啊",
+    pid: "5ecfdfd058e4632932102b54",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-05-29T16:44:16.472Z"),
+    lastmodifytime: ISODate("2020-05-29T16:44:35.652Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed13fa568bb5278b9137be0"),
+    directoryname: "abc",
+    pid: "0",
+    userid: "5ed13fa568bb5278b9137bdf",
+    createtime: ISODate("2020-05-29T17:00:21.11Z"),
+    lastmodifytime: ISODate("2020-05-29T17:00:21.11Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1ac7dad73153d1b285897"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T00:44:45.422Z"),
+    lastmodifytime: ISODate("2020-05-30T00:44:45.422Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1acbcad73153d1b285899"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T00:45:48.395Z"),
+    lastmodifytime: ISODate("2020-05-30T00:45:48.395Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1f572b749240186ae9c3c"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T05:56:02.866Z"),
+    lastmodifytime: ISODate("2020-05-30T05:56:02.866Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1fbd4b749240186ae9c3f"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T06:23:16.034Z"),
+    lastmodifytime: ISODate("2020-05-30T06:23:16.034Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed1ffdbb749240186ae9c41"),
+    directoryname: "aa",
+    pid: "0",
+    userid: "5ed1ffdbb749240186ae9c40",
+    createtime: ISODate("2020-05-30T06:40:27.466Z"),
+    lastmodifytime: ISODate("2020-05-30T06:40:27.466Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed20028b749240186ae9c42"),
+    directoryname: "a ",
+    pid: "5ed0cf5096b2a706dcf98682",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T06:41:44.991Z"),
+    lastmodifytime: ISODate("2020-05-30T06:41:52.314Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed20178b749240186ae9c49"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-30T06:47:20.397Z"),
+    lastmodifytime: ISODate("2020-05-30T06:47:20.397Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed3d153ed17ee3732f6b2c9"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-05-31T15:46:27.133Z"),
+    lastmodifytime: ISODate("2020-05-31T15:46:27.133Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed5ec1c46c8a6015bc17109"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-06-02T06:05:16.097Z"),
+    lastmodifytime: ISODate("2020-06-02T06:05:16.097Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed5ec5046c8a6015bc1710b"),
+    directoryname: "1",
+    pid: "5e79b44ee24600004600756a",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-06-02T06:06:08.755Z"),
+    lastmodifytime: ISODate("2020-06-02T06:06:08.755Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed621f54640453fd80fa71b"),
+    directoryname: "admin",
+    pid: "0",
+    userid: "5e79b1c6e246000046007565",
+    createtime: ISODate("2020-06-02T09:55:01.221Z"),
+    lastmodifytime: ISODate("2020-06-02T09:55:01.221Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2dc2eb2a51edc51a33"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:08.731Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:08.731Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2dc2eb2a51edc51a34"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:09.92Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:09.92Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2dc2eb2a51edc51a35"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:09.931Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:09.931Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2dc2eb2a51edc51a36"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:09.941Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:09.941Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2dc2eb2a51edc51a37"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:09.952Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:09.952Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a38"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.008Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.008Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a39"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.086Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.086Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3a"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.274Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.274Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3b"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.321Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.321Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3c"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.331Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.331Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3d"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.339Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.339Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3e"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.441Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.441Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71e2ec2eb2a51edc51a3f"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:51:10.469Z"),
+    lastmodifytime: ISODate("2020-06-03T03:51:10.469Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed71fb4c2eb2a51edc51a43"),
+    directoryname: "test1",
+    pid: "0",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T03:57:40.934Z"),
+    lastmodifytime: ISODate("2020-06-03T03:57:40.934Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed745dd2927b3333ee53512"),
+    directoryname: "aa",
+    pid: "0",
+    userid: "5ed745dd2927b3333ee53511",
+    createtime: ISODate("2020-06-03T06:40:29.121Z"),
+    lastmodifytime: ISODate("2020-06-03T06:40:29.121Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed7460e2927b3333ee53513"),
+    directoryname: "啊啊",
+    pid: "5ed0cf4996b2a706dcf98681",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T06:41:18.631Z"),
+    lastmodifytime: ISODate("2020-06-03T06:41:26.171Z")
+} ]);
+db.getCollection("directory").insert([ {
+    _id: ObjectId("5ed7461f2927b3333ee53514"),
+    directoryname: "啊啊",
+    pid: "5e9d2956c827e733b178ae55",
+    userid: "5e9d2956c827e733b178ae54",
+    createtime: ISODate("2020-06-03T06:41:35.15Z"),
+    lastmodifytime: ISODate("2020-06-03T06:41:35.15Z")
+} ]);
+
+// ----------------------------
+// Collection structure for permission
+// ----------------------------
+db.getCollection("permission").drop();
+db.createCollection("permission");
+
+// ----------------------------
+// Documents of permission
+// ----------------------------
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed36309e44500006e0021e2"),
+    name: "获取每个角色对应的用户列表",
+    percode: "/user/all",
+    createDate: ISODate("2020-04-11T00:00:00.000Z"),
+    pid: "5ed363eee44500006e0021e3"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed363eee44500006e0021e3"),
+    name: "用户管理模块",
+    percode: "/user",
+    createDate: ISODate("2020-04-11T00:00:00.000Z"),
+    pid: "0"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed36526e44500006e0021e4"),
+    "per_code": "/user/queryusers",
+    name: "获取所有用户",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/queryusers"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed366b7e44500006e0021e5"),
+    "per_code": "/user/admin/id",
+    name: "获取用户信息",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/admin/id"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed366f2e44500006e0021e6"),
+    "per_code": "/user/admin/edit",
+    name: "编辑用户",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/admin/edit"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed36729e44500006e0021e7"),
+    "per_code": "/user/admin/add",
+    name: "添加用户",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/admin/add"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed36761e44500006e0021e8"),
+    "per_code": "/user/admin/delete",
+    name: "删除用户",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/admin/delete"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed3679ee44500006e0021e9"),
+    "per_code": "/user/admin/changstatus",
+    name: "修改用户状态",
+    pid: "5ed363eee44500006e0021e3",
+    createDate: ISODate("1970-01-01T00:00:00.000Z"),
+    percode: "/user/admin/changstatus"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37290e44500006e0021f1"),
+    name: "角色模块",
+    "per_code": "/role",
+    pid: "0",
+    percode: "/role"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37390e44500006e0021f2"),
+    "per_code": "/role/admin/add",
+    name: "添加角色",
+    pid: "5ed37290e44500006e0021f1",
+    percode: "/role/admin/add"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37413e44500006e0021f3"),
+    "per_code": "/role/admin/edit",
+    name: "编辑角色",
+    pid: "5ed37290e44500006e0021f1",
+    percode: "/role/admin/edit"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37448e44500006e0021f4"),
+    "per_code": "/role/admin/delete",
+    name: "删除角色",
+    pid: "5ed37290e44500006e0021f1",
+    percode: "/role/admin/delete"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37500e44500006e0021f5"),
+    name: "文件管理模块",
+    "per_code": "/file",
+    pid: "0",
+    percode: "/file"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed375bfe44500006e0021f6"),
+    name: "文件审核",
+    "per_code": "/file/reviewfile",
+    pid: "5ed37500e44500006e0021f5",
+    percode: "/file/reviewfile"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed37614e44500006e0021f7"),
+    "per_code": "/file/admin/edit",
+    name: "修改文件",
+    pid: "5ed37500e44500006e0021f5",
+    percode: "/file/admin/edit"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed3861ae44500006e0021fd"),
+    name: "网盘功能模块",
+    "per_code": "/aaa",
+    pid: "0",
+    percode: "/aaa"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed38662e44500006e0021fe"),
+    name: "上传",
+    "per_code": "/aaa/upload",
+    pid: "5ed3861ae44500006e0021fd",
+    percode: "/aaa/upload"
+} ]);
+db.getCollection("permission").insert([ {
+    _id: ObjectId("5ed38669e44500006e0021ff"),
+    name: "下载",
+    "per_code": "/download",
+    pid: "5ed3861ae44500006e0021fd",
+    percode: "/aaa/download"
+} ]);
+
+// ----------------------------
+// Collection structure for role
+// ----------------------------
+db.getCollection("role").drop();
+db.createCollection("role");
+
+// ----------------------------
+// Documents of role
+// ----------------------------
+db.getCollection("role").insert([ {
+    _id: ObjectId("5e79aeb6e246000046007562"),
+    name: "管理员",
+    description: "这是管理员描述",
+    pid: "0",
+    storagesize: 21474836480,
+    downloadspeed: 2048,
+    createtime: ISODate("2020-03-23T23:28:33.705Z")
+} ]);
+db.getCollection("role").insert([ {
+    _id: ObjectId("5e79af8be246000046007563"),
+    name: "普通用户",
+    description: "这是普通用户描述",
+    pid: "5e79aeb6e246000046007562",
+    storagesize: 10737418240,
+    downloadspeed: 1024,
+    createtime: ISODate("2020-03-24T15:00:59.000Z")
+} ]);
+db.getCollection("role").insert([ {
+    _id: ObjectId("5e79b09be246000046007564"),
+    name: "付费用户",
+    description: "这是付费用户描述",
+    storagesize: 21474836480,
+    downloadspeed: 2048,
+    createtime: ISODate("2020-03-24T15:00:00.000Z"),
+    pid: "5e79aeb6e246000046007562"
+} ]);
+
+// ----------------------------
+// Collection structure for role_permission
+// ----------------------------
+db.getCollection("role_permission").drop();
+db.createCollection("role_permission");
+
+// ----------------------------
+// Documents of role_permission
+// ----------------------------
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3685ce44500006e0021ea"),
+    permissionid: "5ed36309e44500006e0021e2",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed36873e44500006e0021eb"),
+    permissionid: "5ed36526e44500006e0021e4",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3687ee44500006e0021ec"),
+    permissionid: "5ed366b7e44500006e0021e5",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed36894e44500006e0021ed"),
+    permissionid: "5ed366f2e44500006e0021e6",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed368a0e44500006e0021ee"),
+    permissionid: "5ed36729e44500006e0021e7",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed368ace44500006e0021ef"),
+    permissionid: "5ed36761e44500006e0021e8",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed368b7e44500006e0021f0"),
+    permissionid: "5ed3679ee44500006e0021e9",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3826de44500006e0021f8"),
+    permissionid: "5ed37390e44500006e0021f2",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3827ae44500006e0021f9"),
+    permissionid: "5ed37413e44500006e0021f3",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed38287e44500006e0021fa"),
+    permissionid: "5ed37448e44500006e0021f4",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed382bde44500006e0021fb"),
+    permissionid: "5ed375bfe44500006e0021f6",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed382d2e44500006e0021fc"),
+    permissionid: "5ed37614e44500006e0021f7",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed39273e44500006e002200"),
+    permissionid: "5ed38662e44500006e0021fe",
+    roleid: "5e79aeb6e246000046007562",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3971fe44500006e002201"),
+    roleid: "5e79aeb6e246000046007562",
+    permissionid: "5ed38669e44500006e0021ff",
+    createDate: ISODate("1970-01-01T00:00:00.000Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3cfba31e94f6b33f388ee"),
+    roleid: "5e79b09be246000046007564",
+    permissionid: "5ed38662e44500006e0021fe",
+    createDate: ISODate("2020-05-31T15:39:38.074Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed3cfba31e94f6b33f388ef"),
+    roleid: "5e79b09be246000046007564",
+    permissionid: "5ed38669e44500006e0021ff",
+    createDate: ISODate("2020-05-31T15:39:38.078Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed73a772927b3333ee5350e"),
+    roleid: "5e79af8be246000046007563",
+    permissionid: "5ed38662e44500006e0021fe",
+    createDate: ISODate("2020-06-03T05:51:51.276Z")
+} ]);
+db.getCollection("role_permission").insert([ {
+    _id: ObjectId("5ed73a772927b3333ee5350f"),
+    roleid: "5e79af8be246000046007563",
+    permissionid: "5ed38669e44500006e0021ff",
+    createDate: ISODate("2020-06-03T05:51:51.279Z")
+} ]);
+
+// ----------------------------
+// Collection structure for share
+// ----------------------------
+db.getCollection("share").drop();
+db.createCollection("share");
+
+// ----------------------------
+// Documents of share
+// ----------------------------
+db.getCollection("share").insert([ {
+    _id: ObjectId("5e79c49be246000046007570"),
+    fileid: "5e79b8b8e24600004600756f",
+    userid: "5e79b1c6e246000046007565",
+    code: "abcde",
+    sharestatus: "enable",
+    createdate: ISODate("2020-03-24T00:00:00.000Z")
+} ]);
+
+// ----------------------------
+// Collection structure for user
+// ----------------------------
+db.getCollection("user").drop();
+db.createCollection("user");
+
+// ----------------------------
+// Documents of user
+// ----------------------------
+db.getCollection("user").insert([ {
+    _id: ObjectId("5e79b1c6e246000046007565"),
+    account: "admin",
+    password: "600c849881fb596aacc5717f29f6081a",
+    salt: "abcde",
+    name: "三号元素",
+    sex: "男",
+    roleid: "5e79aeb6e246000046007562",
+    status: "enable",
+    usestoragesize: 1104775617,
+    createtime: ISODate("2020-03-24T15:00:00.000Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5e79b23de246000046007566"),
+    account: "third_e@qq.com",
+    password: "66b1fa687a5e53b9be5a6511f2d82bb5",
+    salt: "edcba",
+    name: "普通用户",
+    sex: "男",
+    status: "enable",
+    usestoragesize: 21474836480,
+    createtime: ISODate("2020-03-24T00:00:00.000Z"),
+    roleid: "5e79af8be246000046007563"
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5e79b284e246000046007567"),
+    roleid: "5e79b09be246000046007564",
+    account: "third_e@163.com",
+    password: "29e67c9412bd79cbef8ea29a821dadf5",
+    salt: "aaabb",
+    name: "付费用户",
+    sex: "男",
+    status: "enable",
+    usestoragesize: 81623136,
+    createtime: ISODate("2020-03-24T00:00:00.000Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5e9d2956c827e733b178ae54"),
+    account: "test1",
+    password: "9f75071aeb8524d6ff8bb046be6692df",
+    salt: "0zkxk",
+    name: "系统展示",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "enable",
+    usestoragesize: 430224696,
+    createtime: ISODate("2020-04-20T04:47:18.867Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5e9d3d3f8f173135d4bd4c7f"),
+    account: "user",
+    password: "a2c64266bbe641c90b55a89ba9643e36",
+    salt: "0iag4",
+    name: "用户2",
+    sex: "男",
+    roleid: "5e79b09be246000046007564",
+    status: "enable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-04-20T06:12:14.98Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ea7f7d2372a423c1414fb8c"),
+    account: "test2",
+    password: "2442b047f0799087f99f17fcac35426e",
+    salt: "5q6hh",
+    name: "测试管理员添加",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "enable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-04-28T09:30:58.367Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ea7fb87c58e6b26736078eb"),
+    account: "test3",
+    password: "e6ec83f11788ab71f26b6c6a1045c527",
+    salt: "isv1s",
+    name: "大是大非",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "disable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-04-28T09:46:47.825Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ea8f95067476430e8ab8091"),
+    account: "test4",
+    password: "30ad24ea90364bd97f20484a04d9fa12",
+    salt: "jvfoa",
+    name: "哈哈",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "enable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-04-29T03:49:36.128Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ea8fbb42b02f61738372061"),
+    account: "test5",
+    password: "4ddad3d1c58e83831eb9b78d17871b28",
+    salt: "3rja1",
+    roleid: "5e79af8be246000046007563",
+    status: "disable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-04-29T03:59:48.37Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5eb52147b8f6fa7b7b12d688"),
+    account: "test123",
+    password: "d38c2c4f1bb4ff8632202d08fd56e322",
+    salt: "cgqg8",
+    name: "我是修改名字",
+    sex: "男",
+    roleid: "5e79b09be246000046007564",
+    status: "delete",
+    usestoragesize: 8403693,
+    createtime: ISODate("2020-05-08T09:07:18.975Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ed0d2c096b2a706dcf98686"),
+    account: "abc",
+    password: "ebfb632bd6dc86e0568f477a0afce2d7",
+    salt: "llzk9",
+    name: "展示",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "delete",
+    usestoragesize: 0,
+    createtime: ISODate("2020-05-29T09:15:44.802Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ed13fa568bb5278b9137bdf"),
+    account: "abc",
+    password: "53b8b4b64bdc8717df219b3e8f6e8970",
+    salt: "bbrca",
+    name: "啊啊啊",
+    sex: "男",
+    roleid: "5e79b09be246000046007564",
+    status: "enable",
+    usestoragesize: 0,
+    createtime: ISODate("2020-05-29T17:00:21.11Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ed1ffdbb749240186ae9c40"),
+    account: "aa",
+    password: "15124ecb5b1db00bb2926429a2811e7e",
+    salt: "scqm9",
+    name: "aa",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "delete",
+    usestoragesize: 0,
+    createtime: ISODate("2020-05-30T06:40:27.466Z")
+} ]);
+db.getCollection("user").insert([ {
+    _id: ObjectId("5ed745dd2927b3333ee53511"),
+    account: "aa",
+    password: "6d2988eb372d34d577effa9ad6b5d1d9",
+    salt: "lyo5n",
+    name: "看看",
+    sex: "男",
+    roleid: "5e79af8be246000046007563",
+    status: "delete",
+    usestoragesize: 0,
+    createtime: ISODate("2020-06-03T06:40:29.121Z")
+} ]);
+
+// ----------------------------
+// Collection structure for userfile
+// ----------------------------
+db.getCollection("userfile").drop();
+db.createCollection("userfile");
+
+// ----------------------------
+// Documents of userfile
+// ----------------------------
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f03ec24fc3b6f6f0b6653"),
+    filename: "管理员文件",
+    filepath: "/admin/text.txt",
+    directoryid: "5e9d572cdfe04b5fc8a3ab37",
+    createtime: ISODate("2020-04-21T14:32:11.933Z"),
+    filesize: 1024000,
+    filestatus: "enable",
+    hash: "abcde",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-21T17:42:37.198Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f040e24fc3b6f6f0b6655"),
+    filename: "普通用户文件",
+    filepath: "/admin/text.txt",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-04-21T14:32:46.351Z"),
+    filesize: 1024000,
+    filestatus: "enable",
+    hash: "abcde",
+    type: "png",
+    userid: "5e79b23de246000046007566",
+    lastmodifytime: ISODate("2020-04-21T14:32:46.351Z"),
+    typename: "picture",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f043824fc3b6f6f0b6657"),
+    filename: "普通用户文件2",
+    filepath: "/admin/text.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T14:33:28.499Z"),
+    filesize: 1024000,
+    filestatus: "disable",
+    hash: "abcde",
+    type: "txt",
+    userid: "5e9d3d3f8f173135d4bd4c7f",
+    lastmodifytime: ISODate("2020-04-21T15:54:03.125Z"),
+    typename: "document",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f11205c67146bb02e7514"),
+    filename: "text52020-04-21",
+    filepath: "/admin/text.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T15:28:32.769Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "jpg",
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-21T15:28:32.769Z"),
+    typename: "picture",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f1765996f0000150027f2"),
+    filename: "ppt名字付费",
+    filepath: "/admin/text.ppt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T15:28:32.769Z"),
+    filesize: 1024000,
+    filestatus: "enable",
+    hash: "abcde",
+    type: "ppt",
+    userid: "5e79b284e246000046007567",
+    lastmodifytime: ISODate("2020-04-21T15:28:32.769Z"),
+    typename: "document",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f2d6b4dba5c5eaca6cd39"),
+    filename: "重命名12020-04-22",
+    filepath: "/admin/text.txt",
+    directoryid: "5e9d572cdfe04b5fc8a3ab37",
+    createtime: ISODate("2020-04-21T17:29:15.009Z"),
+    filesize: 1024000,
+    filestatus: "enable",
+    hash: "abcde",
+    type: "txt",
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-21T17:42:37.198Z"),
+    typename: "document",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f2d6b4dba5c5eaca6cd3a"),
+    filename: "text52020-04-212020-04-22",
+    filepath: "/admin/text.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T17:29:15.124Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "txt",
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-21T17:29:15.124Z"),
+    typename: "document",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f2d6b4dba5c5eaca6cd3b"),
+    filename: "ppt名字2020-04-22",
+    filepath: "/admin/text.ppt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T17:29:15.126Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "ppt",
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-21T17:29:15.126Z"),
+    typename: "document",
+    downloadnum: NumberInt("0")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f2e7a17d062524bfd7655"),
+    filename: "重命名12345",
+    filepath: "/admin/text.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T17:33:46.528Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:01:43.246Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f2e7a17d062524bfd7657"),
+    filename: "ppt名字2020-04-22",
+    filepath: "/admin/text.ppt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-04-21T17:33:46.626Z"),
+    filesize: 1024000,
+    filestatus: "disable",
+    hash: "abcde",
+    type: "ppt",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-27T14:13:16.233Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f3098d78b6c72d84826f5"),
+    filename: "测试删除1",
+    filepath: "/admin/text.txt",
+    directoryid: "5e9f3098d78b6c72d84826f3",
+    createtime: ISODate("2020-04-21T17:42:48.587Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "txt",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-27T14:34:23.112Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5e9f3098d78b6c72d84826f7"),
+    filename: "测试删除",
+    filepath: "/admin/text.txt",
+    directoryid: "5e9f3098d78b6c72d84826f3",
+    createtime: ISODate("2020-04-21T17:42:48.595Z"),
+    filesize: 1024000,
+    filestatus: "delete",
+    hash: "abcde",
+    type: "txt",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-04-27T14:34:23.102Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb2534a1f20e83be8ea049b"),
+    filename: "Postman-win64-7.20.1-Setup1",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T06:03:54.676Z"),
+    filesize: 81623136,
+    filestatus: "delete",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:54:26.836Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb2582c1f20e83be8ea049c"),
+    filename: "Twisted-18.7.0-cp37-cp37m-win_amd64",
+    filepath: "/admin/20200506/Twisted-18.7.0-cp37-cp37m-win_amd64.whl",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T06:24:44.489Z"),
+    filesize: 3051365,
+    filestatus: "enable",
+    hash: "b5f4a5390bea146ad79cef52b7bb8409",
+    type: "whl",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T06:24:44.489Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb260eb02c85c527dfcf3b0"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:02:03.498Z"),
+    filesize: 30,
+    filestatus: "delete",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:43:04.162Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb262ee9d026a45f0ec0115"),
+    filename: "A Fine Frenzy - Almost Lover",
+    filepath: "/admin/20200506/A Fine Frenzy - Almost Lover.mp3",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:10:38.615Z"),
+    filesize: 3733126,
+    filestatus: "enable",
+    hash: "b5e04eb7ee2324608e57ccc2015932db",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("7"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:54:19.899Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb262fd9d026a45f0ec0116"),
+    filename: "Postman-win64-7.20.1-Setup120200506",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:10:53.138Z"),
+    filesize: 81623136,
+    filestatus: "delete",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:49:48.518Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb263ba1ae637025aa42138"),
+    filename: "Postman-win64-7.20.1-Setup120200506",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:14:02.323Z"),
+    filesize: 81623136,
+    filestatus: "delete",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:41:05.801Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb265654eaf7d790663a38b"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:21:09.512Z"),
+    filesize: 30,
+    filestatus: "delete",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:41:01.84Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb268557d3beb349b7e8463"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:33:41.313Z"),
+    filesize: 30,
+    filestatus: "delete",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:40:56.135Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb268b27d3beb349b7e8464"),
+    filename: "Postman-win64-7.20.1-Setup1",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:35:14.722Z"),
+    filesize: 81623136,
+    filestatus: "delete",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:40:50.906Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb26c9614106b01aba20ed1"),
+    filename: "bbb20200506",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:51:50.547Z"),
+    filesize: 30,
+    filestatus: "delete",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:52:00.192Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb26d424ca14446680bb3d4"),
+    filename: "Postman-win64-7.20.1-Setup120200506",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T07:54:42.67Z"),
+    filesize: 81623136,
+    filestatus: "enable",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T07:54:42.67Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb26eaa6f0ff33a90bcdcec"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e9f04ca24fc3b6f6f0b6658",
+    createtime: ISODate("2020-05-06T08:00:42.947Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("2"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-07T14:12:26.24Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb26eba6f0ff33a90bcdcee"),
+    filename: "Spring Boot 笔记+课件",
+    filepath: "/admin/20200506/Spring Boot 笔记+课件.zip",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T08:00:58.396Z"),
+    filesize: 5308988,
+    filestatus: "enable",
+    hash: "d3f53364ae53b53157efcf2d89d1ba26",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T08:00:58.396Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb2705d87815f5d2d197603"),
+    filename: "Postman-win64-7.20.1-Setup1",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-06T08:07:56.987Z"),
+    filesize: 81623136,
+    filestatus: "enable",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-06T08:07:56.987Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb40bc728b6ba286b6aa21e"),
+    filename: "知网查询资料历史",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5ea2b318a4b74606d4995585",
+    createtime: ISODate("2020-05-07T13:23:19.341Z"),
+    filesize: 25,
+    filestatus: "enable",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("2"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-07T13:23:19.341Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb413d9a284b448b47eb850"),
+    filename: "layui-v2.5.5",
+    filepath: "/admin/20200507/layui-v2.5.5.zip",
+    directoryid: "5e79b44ee24600004600756a",
+    createtime: ISODate("2020-05-07T13:57:45.748Z"),
+    filesize: 651350,
+    filestatus: "enable",
+    hash: "98858840fa74b675f3dc38dae2caea2c",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("4"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-07T13:57:45.748Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb413eea284b448b47eb851"),
+    filename: "layui-v2.5.520200507",
+    filepath: "/admin/20200507/layui-v2.5.5.zip",
+    directoryid: "5e79b44ee24600004600756a",
+    createtime: ISODate("2020-05-07T13:58:06.186Z"),
+    filesize: 651350,
+    filestatus: "enable",
+    hash: "98858840fa74b675f3dc38dae2caea2c",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("4"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-07T13:58:06.186Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb5217fb8f6fa7b7b12d68b"),
+    filename: "知网查询资料历史20200508",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5eb52147b8f6fa7b7b12d689",
+    createtime: ISODate("2020-05-08T09:08:15.182Z"),
+    filesize: 25,
+    filestatus: "delete",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:38:04.657Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb52202b8f6fa7b7b12d68c"),
+    filename: "知网查询资料历史20200508",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5eb52168b8f6fa7b7b12d68a",
+    createtime: ISODate("2020-05-08T09:10:26.036Z"),
+    filesize: 25,
+    filestatus: "delete",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:13:30.439Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb522cfb8f6fa7b7b12d68e"),
+    filename: "知网查询资料历史20200508",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5eb52168b8f6fa7b7b12d68a",
+    createtime: ISODate("2020-05-08T09:13:51.125Z"),
+    filesize: 25,
+    filestatus: "delete",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:31:14.001Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb526f54705077d713268e0"),
+    filename: "知网查询资料历史20200508",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5eb52168b8f6fa7b7b12d68a",
+    createtime: ISODate("2020-05-08T09:31:33.325Z"),
+    filesize: 25,
+    filestatus: "delete",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:31:33.325Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb5275b4705077d713268e1"),
+    filename: "Spring Boot 笔记+课件20200508",
+    filepath: "/admin/20200506/Spring Boot 笔记+课件.zip",
+    directoryid: "5eb52168b8f6fa7b7b12d68a",
+    createtime: ISODate("2020-05-08T09:33:15.51Z"),
+    filesize: 5308988,
+    filestatus: "delete",
+    hash: "d3f53364ae53b53157efcf2d89d1ba26",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:37:40.864Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb527a44705077d713268e2"),
+    filename: "G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳",
+    filepath: "/test123/20200508/G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳.mp3",
+    directoryid: "5eb52168b8f6fa7b7b12d68a",
+    createtime: ISODate("2020-05-08T09:34:28.378Z"),
+    filesize: 4077399,
+    filestatus: "delete",
+    hash: "68b2d178f6dfd1bf1ead7b6e18e4851e",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:37:32.162Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb52a3eccd3010f5e466d76"),
+    filename: "G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳20200508",
+    filepath: "/test123/20200508/G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳.mp3",
+    directoryid: "5eb52147b8f6fa7b7b12d689",
+    createtime: ISODate("2020-05-08T09:45:34.228Z"),
+    filesize: 4077399,
+    filestatus: "enable",
+    hash: "68b2d178f6dfd1bf1ead7b6e18e4851e",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:45:34.228Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb52a68ccd3010f5e466d77"),
+    filename: "Dj Okawari - Luv Letter",
+    filepath: "/test123/20200508/Dj Okawari - Luv Letter.mp3",
+    directoryid: "5eb52147b8f6fa7b7b12d689",
+    createtime: ISODate("2020-05-08T09:46:16.469Z"),
+    filesize: 4326294,
+    filestatus: "disable",
+    hash: "166ccc460414603cc50a4418e5ce4363",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("1"),
+    userid: "5eb52147b8f6fa7b7b12d688",
+    lastmodifytime: ISODate("2020-05-08T09:46:44.416Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54ef8d530764ba0649aab"),
+    filename: "知网查询资料历史20200508",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:22:15.826Z"),
+    filesize: 25,
+    filestatus: "enable",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:22:15.826Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54ef8d530764ba0649aac"),
+    filename: "bbb20200508",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:22:15.825Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:22:15.825Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54f1dd530764ba0649aad"),
+    filename: "axyao-ScheduleShare-master",
+    filepath: "/admin/20200508/axyao-ScheduleShare-master.zip",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:22:53.813Z"),
+    filesize: 5218568,
+    filestatus: "enable",
+    hash: "67c3d7742338eca499d2c738b1a82e0e",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:22:53.813Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54f26d530764ba0649aae"),
+    filename: "Postman-win64-7.23.0-Setup",
+    filepath: "/admin/20200508/Postman-win64-7.23.0-Setup.exe",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:23:02.806Z"),
+    filesize: 81268832,
+    filestatus: "enable",
+    hash: "bac2996de0c827522d73efb8c051a9ed",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:23:02.806Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54f66d530764ba0649aaf"),
+    filename: "Postman-win64-7.23.0-Setup20200508",
+    filepath: "/admin/20200508/Postman-win64-7.23.0-Setup.exe",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:24:06.457Z"),
+    filesize: 81268832,
+    filestatus: "enable",
+    hash: "bac2996de0c827522d73efb8c051a9ed",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:24:06.457Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eb54fcdd530764ba0649ab0"),
+    filename: "Postman-win64-7.23.0-Setup20200508",
+    filepath: "/admin/20200508/Postman-win64-7.23.0-Setup.exe",
+    directoryid: "5e9f040e24fc3b6f6f0b6654",
+    createtime: ISODate("2020-05-08T12:25:49.156Z"),
+    filesize: 81268832,
+    filestatus: "enable",
+    hash: "bac2996de0c827522d73efb8c051a9ed",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-08T12:25:49.156Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1635"),
+    filename: "知网查询资料历史",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5ebb906c5626c803c16b1633",
+    createtime: ISODate("2020-05-13T06:15:08.036Z"),
+    filesize: 25,
+    filestatus: "enable",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-13T06:15:08.036Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1637"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5ebb906b5626c803c16b1632",
+    createtime: ISODate("2020-05-13T06:15:08.046Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-13T06:15:08.046Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ebb906c5626c803c16b1639"),
+    filename: "Postman-win64-7.20.1-Setup1",
+    filepath: "/admin/20200506/Postman-win64-7.20.1-Setup1.exe",
+    directoryid: "5e9f043824fc3b6f6f0b6656",
+    createtime: ISODate("2020-05-13T06:15:08.047Z"),
+    filesize: 81623136,
+    filestatus: "enable",
+    hash: "59f43ce720b2a3d2059112377c34acdd",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-13T06:15:08.047Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ebb9f945626c803c16b163a"),
+    filename: "知网查询资料历史20200513",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-13T07:19:48.393Z"),
+    filesize: 25,
+    filestatus: "enable",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-13T07:19:48.393Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5eca0758b54e4311c3a532d5"),
+    filename: "Taylor Swift - Love Story",
+    filepath: "/admin/20200524/Taylor Swift - Love Story.mkv",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-24T05:34:16.174Z"),
+    filesize: 16820530,
+    filestatus: "enable",
+    hash: "ce0d545cd3a8b122f3f9549d815b7c71",
+    type: "mkv",
+    typename: "video",
+    downloadnum: NumberInt("2"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-24T05:34:16.174Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ecfdb4e43033162a86665c3"),
+    filename: "080407rluir0fzwfkc2fru",
+    filepath: "/admin/20200528/080407rluir0fzwfkc2fru.jpg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-28T15:39:58.244Z"),
+    filesize: 31445,
+    filestatus: "enable",
+    hash: "4d7d560dedc8bf1cc6ab35d1ad91398a",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-28T15:39:58.244Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ecfdb5a43033162a86665c4"),
+    filename: "a716fd45jw1fd4nhtawi6j20dw0dwgmh",
+    filepath: "/admin/20200528/a716fd45jw1fd4nhtawi6j20dw0dwgmh.jpg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-28T15:40:10.018Z"),
+    filesize: 46531,
+    filestatus: "enable",
+    hash: "8e40e6094c05da1eee79fa4cd597ca95",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-28T15:40:10.018Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed0d66296b2a706dcf98688"),
+    filename: "G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳",
+    filepath: "/test123/20200508/G.E.M.邓紫棋、雷佳、TFBOYS、杨洋、关晓彤、肖央、王嘉、秦凯、何姿 - 瞳孔里的太阳.mp3",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T09:31:14.326Z"),
+    filesize: 4077399,
+    filestatus: "delete",
+    hash: "68b2d178f6dfd1bf1ead7b6e18e4851e",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.349Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed0d67996b2a706dcf98689"),
+    filename: "Taylor Swift - Love Story",
+    filepath: "/admin/20200524/Taylor Swift - Love Story.mkv",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T09:31:37.458Z"),
+    filesize: 16820530,
+    filestatus: "delete",
+    hash: "ce0d545cd3a8b122f3f9549d815b7c71",
+    type: "mkv",
+    typename: "video",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.334Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed0d6a896b2a706dcf9868a"),
+    filename: "Spring Boot 笔记+课件",
+    filepath: "/admin/20200506/Spring Boot 笔记+课件.zip",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T09:32:24.697Z"),
+    filesize: 5308988,
+    filestatus: "delete",
+    hash: "d3f53364ae53b53157efcf2d89d1ba26",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.326Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed0d6fd96b2a706dcf9868b"),
+    filename: "知网查询资料",
+    filepath: "/admin/20200507/知网查询资料历史.txt",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T09:33:49.242Z"),
+    filesize: 25,
+    filestatus: "delete",
+    hash: "dcfa8d58aa57bfa4f3bd0827422804b7",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.277Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed133393bad4269bea2ace2"),
+    filename: "teacher",
+    filepath: "/test1/20200530/teacher.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T16:07:21.559Z"),
+    filesize: 75014,
+    filestatus: "delete",
+    hash: "25340dcad7b789fb071976cbe3bc79ac",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.193Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed133473bad4269bea2ace3"),
+    filename: "17457",
+    filepath: "/test1/20200530/17457.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T16:07:35.18Z"),
+    filesize: 105707,
+    filestatus: "delete",
+    hash: "6fbc7c5981a90fd67d7d0303732dba13",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-05-29T16:07:40.807Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed135f168bb5278b9137bdb"),
+    filename: "白天变黑夜",
+    filepath: "/test1/20200530/白天变黑夜.psd",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-29T16:18:57.648Z"),
+    filesize: 25828241,
+    filestatus: "delete",
+    hash: "ae2d6e72dbe265f9b3369ee777360ca8",
+    type: "psd",
+    typename: "picture",
+    downloadnum: NumberInt("2"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.012Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed13c1d68bb5278b9137bde"),
+    filename: "421",
+    filepath: "/admin/20200530/42.jpg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-05-29T16:45:17.671Z"),
+    filesize: 98382,
+    filestatus: "enable",
+    hash: "1fbe5680986904fa3a04fd58913707e4",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-05-31T09:11:20.366Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed1e763b749240186ae9c39"),
+    filename: "a716fd45jw1fd84cplk5aj20dw0dwjsi",
+    filepath: "/test1/20200530/a716fd45jw1fd84cplk5aj20dw0dwjsi.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-30T04:56:03.817Z"),
+    filesize: 51805,
+    filestatus: "delete",
+    hash: "3509caab668c985b30d888f1c21369a7",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("4"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:09.956Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed1f523b749240186ae9c3b"),
+    filename: "a716fd45jw1fd84cprdzgj20dw0dw75m",
+    filepath: "/test1/20200530/a716fd45jw1fd84cprdzgj20dw0dw75m.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-30T05:54:43.013Z"),
+    filesize: 59581,
+    filestatus: "delete",
+    hash: "69f900fd63798ab12c40ef67e67db580",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-05-30T05:56:02.87Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed1f947b749240186ae9c3d"),
+    filename: "a716fd45jw1fdcqsra5v8j20dw0dwacs",
+    filepath: "/test1/20200530/a716fd45jw1fdcqsra5v8j20dw0dwacs.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-30T06:12:23.083Z"),
+    filesize: 110958,
+    filestatus: "disable",
+    hash: "f08425bcf3fdc206ef823dbcae6bc369",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-05-30T06:41:06.687Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed1fb46b749240186ae9c3e"),
+    filename: "a716fd45jw1fd4nhslmxdj20dw0dwab0",
+    filepath: "/test1/20200530/a716fd45jw1fd4nhslmxdj20dw0dwab0.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-30T06:20:54.107Z"),
+    filesize: 45410,
+    filestatus: "delete",
+    hash: "7bcb3ac7e6864263418d8dc993f39374",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-05-30T06:23:16.04Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed200fab749240186ae9c46"),
+    filename: "Amy Diamond - Heartbeats",
+    filepath: "/test1/20200530/Amy Diamond - Heartbeats.mp3",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-30T06:45:14.667Z"),
+    filesize: 3780903,
+    filestatus: "delete",
+    hash: "e772a98469675c239cabad572c01c10d",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:09.924Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed20178b749240186ae9c4a"),
+    filename: "QQ图片",
+    filepath: "/test1/20200530/QQ图片.jpg",
+    directoryid: "5ed0cf4996b2a706dcf98681",
+    createtime: ISODate("2020-05-30T06:47:20.389Z"),
+    filesize: 60495,
+    filestatus: "delete",
+    hash: "8ec85c4f00f45e2c39bfe1d8a55b12af",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("2"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:57:40.936Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed390ab89b9623f325dd148"),
+    filename: "42",
+    filepath: "/admin/20200530/42.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-31T11:10:35.644Z"),
+    filesize: 98382,
+    filestatus: "delete",
+    hash: "1fbe5680986904fa3a04fd58913707e4",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-05-31T15:46:27.177Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed396ba3e5da002b398790e"),
+    filename: "4220200531",
+    filepath: "/admin/20200530/42.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-05-31T11:36:26.582Z"),
+    filesize: 98382,
+    filestatus: "delete",
+    hash: "1fbe5680986904fa3a04fd58913707e4",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("1"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.444Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed540d1ce93276fb3eed9e5"),
+    filename: "bbb",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-01T17:54:24.95Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-01T17:54:24.95Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed542c03d94890310b02bb2"),
+    filename: "nox_setup_v6.6.0.1_full",
+    filepath: "/admin/20200602/nox_setup_v6.6.0.1_full.exe",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-01T18:02:40.972Z"),
+    filesize: 309099088,
+    filestatus: "enable",
+    hash: "2427044cef22c3e2ba5bc5b927b67931",
+    type: "exe",
+    typename: "other",
+    downloadnum: NumberInt("2"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-01T18:02:40.972Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed5ec6546c8a6015bc1710c"),
+    filename: "bbb20200602",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T06:06:29.807Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("1"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T06:06:29.807Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed5ec7546c8a6015bc1710d"),
+    filename: "bbb20200602",
+    filepath: "/admin/20200506/bbb.txt",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T06:06:45.018Z"),
+    filesize: 30,
+    filestatus: "enable",
+    hash: "ff0c35765e9a15a5b9ed6215630edbd5",
+    type: "txt",
+    typename: "document",
+    downloadnum: NumberInt("4"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T06:06:45.018Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed614b3c67f74262a02ac3d"),
+    filename: "7bab0cd0be13422d9d85a78dde8097dd",
+    filepath: "/admin/20200602/7bab0cd0be13422d9d85a78dde8097dd.doc",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T08:58:27.849Z"),
+    filesize: 314760,
+    filestatus: "enable",
+    hash: "cc275c1afc4cba1c1957e6b9e8106b11",
+    type: "doc",
+    typename: "document",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T08:58:27.849Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed61790835dcc00e6e84672"),
+    filename: "1460170296758478[1]",
+    filepath: "/admin/20200602/1460170296758478[1].jpg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T09:10:40.231Z"),
+    filesize: 12014,
+    filestatus: "enable",
+    hash: "3e90baaa84425cfece40906584faa5a7",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T09:10:40.231Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed61e084640453fd80fa719"),
+    filename: "20150725120634_ietyn",
+    filepath: "/admin/20200602/20150725120634_ietyn.jpeg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T09:38:16.21Z"),
+    filesize: 404757,
+    filestatus: "enable",
+    hash: "c8354018caba0b427be3400384a7be3c",
+    type: "jpeg",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T09:38:16.21Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed61e404640453fd80fa71a"),
+    filename: "a716fd45jw1fdcqsqs54tj20dw0dw785",
+    filepath: "/admin/20200602/a716fd45jw1fdcqsqs54tj20dw0dw785.jpg",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T09:39:12.523Z"),
+    filesize: 152808,
+    filestatus: "delete",
+    hash: "35fd16e3199db51f02cce37df6564e04",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T09:55:01.257Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed622ad4640453fd80fa71c"),
+    filename: "137",
+    filepath: "/admin/20200602/137.psd",
+    directoryid: "5e79b3c9e246000046007568",
+    createtime: ISODate("2020-06-02T09:58:05.173Z"),
+    filesize: 33560672,
+    filestatus: "enable",
+    hash: "fff01717ce8cd7894c322b5726a1c9ad",
+    type: "psd",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e79b1c6e246000046007565",
+    lastmodifytime: ISODate("2020-06-02T09:58:05.173Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed62a3474d55b7881a5cb9d"),
+    filename: "a7241b08413924a94637a72ccc0845ed",
+    filepath: "/test1/20200602/a7241b08413924a94637a72ccc0845ed.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-02T10:30:12.207Z"),
+    filesize: 239097,
+    filestatus: "delete",
+    hash: "1c4c221158a5f13ca34dd1dc35a20eb8",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:51:10.487Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed71edbc2eb2a51edc51a40"),
+    filename: "2_看图王",
+    filepath: "/test1/20200603/2_看图王.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T03:54:03.533Z"),
+    filesize: 171468,
+    filestatus: "enable",
+    hash: "a3a54ab8a1138a3c59f294dd41cee857",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:54:03.533Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed71f28c2eb2a51edc51a41"),
+    filename: "51yuansu.com___5b83d81bcec3d",
+    filepath: "/test1/20200603/51yuansu.com___5b83d81bcec3d.psd",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T03:55:20.05Z"),
+    filesize: 6670690,
+    filestatus: "enable",
+    hash: "adb2d3bc670fdb68d9a7e174d4a6fb7c",
+    type: "psd",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:55:20.05Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed71f86c2eb2a51edc51a42"),
+    filename: "千图网_经典样式的电影片尾字幕展示_图片编号17843849",
+    filepath: "/test1/20200603/千图网_经典样式的电影片尾字幕展示_图片编号17843849.zip",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T03:56:54.658Z"),
+    filesize: 47648728,
+    filestatus: "enable",
+    hash: "1df0596bd86bd063858c329e4ac46b55",
+    type: "zip",
+    typename: "other",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T03:56:54.658Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed720d4c2eb2a51edc51a44"),
+    filename: "54c9f56010721",
+    filepath: "/test1/20200603/54c9f56010721.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:02:28.777Z"),
+    filesize: 300844,
+    filestatus: "enable",
+    hash: "269600cc967bd79a64d1cf9cf2369dd1",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:02:28.777Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed721b8c2eb2a51edc51a45"),
+    filename: "139-150114142237-50",
+    filepath: "/test1/20200603/139-150114142237-50.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:06:16.304Z"),
+    filesize: 164292,
+    filestatus: "enable",
+    hash: "5716295b3e9392743839cb4863f4625e",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:06:16.304Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed72318c2eb2a51edc51a46"),
+    filename: "17674",
+    filepath: "/test1/20200603/17674.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:12:08.492Z"),
+    filesize: 122229,
+    filestatus: "enable",
+    hash: "121cfb63bad276463281f4abaf568bd2",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:12:08.492Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed72371c2eb2a51edc51a47"),
+    filename: "17457",
+    filepath: "/test1/20200530/17457.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:13:37.135Z"),
+    filesize: 105707,
+    filestatus: "enable",
+    hash: "6fbc7c5981a90fd67d7d0303732dba13",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:13:37.135Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed7239cc2eb2a51edc51a48"),
+    filename: "0FA35DCB-62CF-4275-A943-4F82FBF40E46",
+    filepath: "/test1/20200603/0FA35DCB-62CF-4275-A943-4F82FBF40E46.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:14:20.051Z"),
+    filesize: 39568,
+    filestatus: "enable",
+    hash: "a9a5f9870486e8d7ffbbd78a93af9dff",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:14:20.051Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed727a92927b3333ee53507"),
+    filename: "陈奕迅 - 可以了",
+    filepath: "/test1/20200603/陈奕迅 - 可以了.mp3",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:31:37.401Z"),
+    filesize: 11680914,
+    filestatus: "enable",
+    hash: "99af70d9baa358a1564a7bb19d61abce",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:31:37.401Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed728212927b3333ee53508"),
+    filename: "田馥甄 - 小幸运 (钢琴版伴奏)",
+    filepath: "/test1/20200603/田馥甄 - 小幸运 (钢琴版伴奏).mp3",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:33:37.428Z"),
+    filesize: 2444469,
+    filestatus: "enable",
+    hash: "d48995a5e1136132f93ef39328513829",
+    type: "mp3",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:33:37.428Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed728542927b3333ee53509"),
+    filename: "QQ图片20161212093802",
+    filepath: "/test1/20200603/QQ图片20161212093802.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T04:34:28.91Z"),
+    filesize: 209722,
+    filestatus: "enable",
+    hash: "ff26b16ee3c0fe41590855b1ee5a30a8",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T04:34:28.91Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed73a872927b3333ee53510"),
+    filename: "1",
+    filepath: "/test1/20200603/1.jpg",
+    directoryid: "5ed0cf4396b2a706dcf98680",
+    createtime: ISODate("2020-06-03T05:52:07.222Z"),
+    filesize: 39478,
+    filestatus: "enable",
+    hash: "81999919227f7f6f611a4853fe4845b1",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("1"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T06:10:51.867Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed746472927b3333ee53515"),
+    filename: "QQ图片",
+    filepath: "/test1/20200530/QQ图片.jpg",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T06:42:13.016Z"),
+    filesize: 60495,
+    filestatus: "enable",
+    hash: "8ec85c4f00f45e2c39bfe1d8a55b12af",
+    type: "jpg",
+    typename: "picture",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T06:42:13.016Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed7465a2927b3333ee53516"),
+    filename: "陈粒 - 易燃易爆炸",
+    filepath: "/test1/20200603/陈粒 - 易燃易爆炸.flac",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T06:42:34.297Z"),
+    filesize: 18639666,
+    filestatus: "enable",
+    hash: "e07d0ab4260c1a4cd3de024f4ef2ecb5",
+    type: "flac",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T06:42:34.297Z")
+} ]);
+db.getCollection("userfile").insert([ {
+    _id: ObjectId("5ed746662927b3333ee53517"),
+    filename: "陈粒 - 易燃易爆炸20200603",
+    filepath: "/test1/20200603/陈粒 - 易燃易爆炸.flac",
+    directoryid: "5e9d2956c827e733b178ae55",
+    createtime: ISODate("2020-06-03T06:42:46.789Z"),
+    filesize: 18639666,
+    filestatus: "enable",
+    hash: "e07d0ab4260c1a4cd3de024f4ef2ecb5",
+    type: "flac",
+    typename: "music",
+    downloadnum: NumberInt("0"),
+    userid: "5e9d2956c827e733b178ae54",
+    lastmodifytime: ISODate("2020-06-03T06:42:46.789Z")
+} ]);

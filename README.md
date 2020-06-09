@@ -85,6 +85,7 @@
  **1.2.2安装** 
 
 （1）修改配置文件：
+
     hadoop-env.sh
     export JAVA_HOME=/home/hadoop3/jdk
 

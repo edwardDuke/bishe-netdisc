@@ -5,6 +5,7 @@
  **1.1 伪分布模式** 
 
  **1.1.1安装前准备** 
+
 （1）安装Linux
       下载Ubuntu 16.04
 
@@ -129,16 +130,17 @@
     </property>	
 
 
-（2）格式化
-    hdfs namenode -format
+（2）格式化：hdfs namenode -format
 
 （3）启动停止Hadoop的环境
+
     start-all.sh
+
     stop-all.sh
 （4）测试
-    查看进程：
-    jps
+    查看进程：jps
 
 通过Web界面：
-HDFS:  http://191.168.88.130:50070  http://191.168.88.130:50090
-Yarn:  http://191.168.88.130:8088
+    HDFS:  http://191.168.88.130:50070  
+    http://191.168.88.130:50090
+    Yarn:  http://191.168.88.130:8088
